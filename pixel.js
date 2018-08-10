@@ -21,14 +21,36 @@ const palette = document.createElement('div');
 mainBox.appendChild(palette);
 palette.className = 'palette';
 
-//create two rows of colors for palette
+//create row of colors for palette
 const rowOne = document.createElement('div');
 palette.appendChild(rowOne);
 rowOne.className = 'row';
 
+//makes the paintBrushColor a global variable
+let paintBrushColor = null;
+//create pixels w/in canvas
+function pixelCanvas (){
+    for (let i = 0; i < 5000; i ++) {
+        let pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        canvas.appendChild(pixel);
+
+        //add paintbrush color to pixel when clicked
+        pixel.addEventListener('mouseenter', (ev)=> {
+            let mouseLeave = false;
+            if (!mouseLeave) {
+                pixel.style.backgroundColor = paintBrushColor;
+            } else {
+                pixel.style.backgroundColor = '';
+            }
+        });
+    }
+
+}
+
 // create function for getting colors to assign to the first row of the palette.
 function getColor() {
-    rowOneColors = ['Black', 'Azure', 'Beige', 'Bisque', 'BurlyWood', 'DarkOrange', 'FireBrick', 'LightSalmon', 'LightSkyBlue', 'MediumOrchid', 'Plum', 'SeaGreen', 'SlateGrey', 'Yellow', 'Violet']
+    rowOneColors = ['Black', 'Azure', 'Beige', 'Bisque', 'BurlyWood', 'DarkOrange', 'FireBrick', 'LightSalmon', 'LightSkyBlue', 'MediumOrchid', 'Plum', 'SeaGreen', 'SlateGrey', 'Yellow', 'Violet', 'Brown', 'Snow', 'Green', 'Pink', 'Turquoise', 'Blue', 'Tan', 'LimeGreen' ]
     for (let i = 0; i < rowOneColors.length; i ++) {
         let color = document.createElement('div');
         rowOne.appendChild(color);
@@ -42,22 +64,7 @@ function getColor() {
 
 }
 
-//makes the paintBrushColor a global variable
-let paintBrushColor = null;
-//create pixels w/in canvas
-function pixelCanvas (){
-    for (let i = 0; i < 5000; i ++) {
-        let pixel = document.createElement('div');
-        pixel.className = 'pixel';
-        canvas.appendChild(pixel);
 
-        //add paintbrush color to pixel when clicked
-        pixel.addEventListener('click', (ev)=> {
-            pixel.style.backgroundColor = paintBrushColor;
-        });
-    }
-
-}
 
 pixelCanvas();
 getColor();
