@@ -28,6 +28,8 @@ rowOne.className = 'row';
 
 //makes the paintBrushColor a global variable
 let paintBrushColor = null;
+//tracks mouse pointer is down; default is false
+let down = false;
 //create pixels w/in canvas
 function pixelCanvas (){
     for (let i = 0; i < 5000; i ++) {
@@ -35,17 +37,25 @@ function pixelCanvas (){
         pixel.className = 'pixel';
         canvas.appendChild(pixel);
 
-        //add paintbrush color to pixel when clicked
-        pixel.addEventListener('mouseenter', (ev)=> {
-            let mouseLeave = false;
-            if (!mouseLeave) {
-                pixel.style.backgroundColor = paintBrushColor;
-            } else {
-                pixel.style.backgroundColor = '';
-            }
-        });
+    //add paintbrush color to pixel when clicked and with drag
     }
+    // Listens for mouse press and release on canvas. true = pressed, sets false = released;
+    canvas.addEventListener('mousedown', (ev)=> {
+        down = true;
+        canvas.addEventListener('mouseup', (ev) => {
+            down = false;
+        })
+        //makes sure colors won't be filled when mouse leaves canvas
+        canvas.addEventListener('mouseleave', (ev) => {
+            down = false;
+        })
 
+        canvas.addEventListener('mouseover', (ev) => {
+            if(down && ev.target.className === 'pixel') {
+                ev.target.style.backgroundColor = paintBrushColor;
+            }
+        })
+    });
 }
 
 // create function for getting colors to assign to the first row of the palette.
@@ -63,8 +73,6 @@ function getColor() {
     }
 
 }
-
-
 
 pixelCanvas();
 getColor();
