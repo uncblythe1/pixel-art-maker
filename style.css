@@ -1,3 +1,7 @@
+body {
+    background-color: #d4d4d3
+}
+
 h1 {
     font-family: monospace;
     font-size: 50px;
@@ -7,11 +11,12 @@ h1 {
 .mainBox {
     width: 795.5px;
     height: 600px;
-    border: 12px lightgrey solid;
+    border: 12px #c0babae3 solid;
     border-radius: 10px ;
-    box-shadow: 0 0 10px lightgrey;
-    background-color: lightcyan;
+    box-shadow: 0 0 40px #c0babae3;
+    background-color: #e5e5e5;;
     text-align: center;
+    margin: auto;
 }
 
 .canvas {
@@ -47,6 +52,7 @@ h1 {
     margin: 5px;
     display: inline-block;
     border-radius: 20px;
+    position: relative;
 }
 
 .pen {
@@ -57,4 +63,56 @@ h1 {
     display: inline-block;
     margin: 9px;
     float: left;
+}
+
+.cpt {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 8px;
+    margin-right: 155px;
+}
+
+.colorPicker {
+    border: lightgrey 1px solid;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin-right: 170px;
+    margin-bottom: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.cct {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 8px;
+    margin-right: 40px;
+}
+
+.currentColor {
+    background-color: white;
+    border: #d1cfcfce 1.5px solid;
+    border-radius: 10px;
+    width: 60px;
+    height: 37px;
+    margin-right: 48px;
+    margin-bottom: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.tools {
+
+
 }
